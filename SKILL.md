@@ -1,6 +1,6 @@
 ---
 name: project-context
-description: Create and maintain repository-root PROJECT_CONTEXT.md for durable AI-facing project knowledge. Use when asked to map or understand a repository and preserve context, create or update project context, verify and repair possibly stale context, or assess whether a change set materially affected it when the user explicitly asks or a commit-preparation workflow requests ASSESS. Do not start CREATE or REFRESH for ordinary coding, debugging, explanation, or small refactors merely because a repository is being edited.
+description: Create and maintain repository-root PROJECT_CONTEXT.md for durable AI-facing project knowledge. Use when asked to map or understand a repository and preserve context, create or update project context, verify and repair possibly stale context, or assess whether a change set materially affected it when the user, a commit-preparation workflow, or another invoking Skill explicitly requests ASSESS. Do not start CREATE or REFRESH for ordinary coding, debugging, explanation, or small refactors merely because a repository is being edited.
 ---
 
 # Project Context
@@ -23,7 +23,7 @@ Treat a valid explicit request for one of these operations as decisive: explicit
 When no valid explicit operation is requested, infer one only when the available context is unambiguous:
 
 - `CREATE`: The user asks to create persistent project context, or to understand or map a repository and preserve the resulting AI-facing knowledge. Absence of `PROJECT_CONTEXT.md` by itself does not authorize a write.
-- `ASSESS`: The user, or a commit-preparation workflow, requests a scoped decision about whether a completed change set materially affected durable project knowledge. Completing a development task alone does not trigger `ASSESS`.
+- `ASSESS`: The user, a commit-preparation workflow, or another Skill that orchestrates this one explicitly requests a scoped decision about whether a completed change set materially affected durable project knowledge. Completing a development task alone does not trigger `ASSESS`.
 - `UPDATE`: The user identifies a known or proposed material context change and wants the affected persistent knowledge changed.
 - `REFRESH`: The user wants existing context verified for freshness or trustworthiness before deciding what repair, if any, is needed; or, without an explicit operation, current evidence suggests possible staleness.
 
@@ -72,7 +72,7 @@ Stop without writing when approval is absent, refused, ambiguous, or narrower th
 
 ## ASSESS
 
-Entry: the user explicitly requests `ASSESS`, or a commit-preparation workflow requests it for the change set about to be committed. Do not run it automatically after each development task.
+Entry: the user explicitly requests `ASSESS`, a commit-preparation workflow requests it for the change set about to be committed, or another Skill that orchestrates this one explicitly invokes it. Do not run it automatically after each development task.
 
 Inspect only the completed change, its affected behavior and boundaries, and task-relevant evidence. Do not start a full repository scan. Apply the materiality rubric and return exactly one outcome:
 
