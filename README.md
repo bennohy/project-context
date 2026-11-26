@@ -7,7 +7,7 @@ Project Context 是一個 Codex Skill，用來建立及維護專案根目錄的 
 | 操作 | 適用情況 | 結果 |
 | --- | --- | --- |
 | `CREATE` | 想將專案導覽結果保存為長期脈絡 | 先進行唯讀檢查並提出內容草案；取得明確核准後才建立檔案 |
-| `ASSESS` | 完成開發工作後，判斷變更是否影響長期脈絡 | 回報是否需要建立或更新 `PROJECT_CONTEXT.md`；不會自行寫入 |
+| `ASSESS` | 使用者明確要求，或準備 commit 時（例如 `commit-prep`），判斷變更是否影響長期脈絡；不會在每次開發完成後自動執行 | 回報是否需要建立或更新 `PROJECT_CONTEXT.md`；不會自行寫入 |
 | `UPDATE` | 已知某項重要的專案知識需要修正 | 查證受影響的部分，提出局部修改，取得核准後更新 |
 | `REFRESH` | 懷疑現有脈絡已過時，想檢查可信度 | 逐項核對相關內容；需要修復時先提出方案並取得核准 |
 
@@ -27,7 +27,7 @@ Project Context 是一個 Codex Skill，用來建立及維護專案根目錄的 
 - 「使用 `$project-context` 的 `ASSESS`，判斷剛完成的變更是否需要更新專案脈絡。」
 - 「使用 `$project-context` 的 `REFRESH`，檢查現有 `PROJECT_CONTEXT.md` 是否仍然可靠。」
 
-提問內容符合 Skill 的說明時，Codex 也可能自行選用。一般的程式修改或除錯不會自動觸發 `CREATE` 或 `REFRESH`。
+提問內容符合 Skill 的說明時，Codex 也可能自行選用。一般的程式修改或除錯不會自動觸發 `CREATE`、`ASSESS` 或 `REFRESH`。
 
 ## 工作原則
 
